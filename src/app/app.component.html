@@ -2,9 +2,26 @@
   <header>
     <app-navbar></app-navbar>
   </header>
-  <main>
-    <router-outlet></router-outlet>
-  </main>
+    <mat-sidenav-container style="height: inherit;">
+      <mat-sidenav #sidenav fxLayout="column">
+          <br />
+          <button mat-button routerLink="/home" (click)="sidenav.close()">
+            <h2>Home</h2>
+          </button>
+          <button mat-button routerLink="/about" (click)="sidenav.close()">
+            <h2>About</h2>
+          </button>
+          <button mat-button routerLink="/contact" (click)="sidenav.close()">
+            <h2>Contact Us</h2>
+          </button>
+      </mat-sidenav>
+      <div style="height: -webkit-fill-available;">
+        <button type="button" mat-icon-button (click)="sidenav.open()">
+          <mat-icon aria-label="Open Menu">menu</mat-icon>
+        </button>
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-container>
   <footer class="page-footer">
     <!-- <app-footer></app-footer> -->
   </footer>

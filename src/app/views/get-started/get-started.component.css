@@ -1,0 +1,14 @@
+.label {
+    margin: 0;
+}
+
+
+.titles {
+    text-align: center;
+}
+
+.link {
+    color: #144768;
+    font-size: 11px;
+    cursor: pointer;
+}

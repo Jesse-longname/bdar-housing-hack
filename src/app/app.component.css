@@ -4,6 +4,7 @@
     flex-direction: column;
 }
 
-main {
+mat-sidenav-container {
     flex: 1;
+    height: inherit;
 }

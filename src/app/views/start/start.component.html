@@ -1,0 +1,34 @@
+<div class="about-main" fxLayout="row wrap" fxLayoutAlign="center">
+  <div fxFlex.xs="2.5%" fxFlex.sm="5%" fxFlex.md="7.5%" fxFlex.gt-md="10%"></div>
+  <div fxFlex.xs="95%" fxFlex.sm="90%" fxFlex.md="85%" fxFlex.gt-md="80%" fxLayout="column" fxLayoutAlign="center">
+    <div fxFlex class="titles">
+      <h1>
+        Here's what we've found for you!
+      </h1>
+    </div>
+    <div fxFlex class="subtitles">
+      <h3>
+        Based on your answers to our quiz, here is what you can afford: 
+      </h3>
+      <h3>
+        <strong>{{ customAffordableHouse | currency:'CAD':true }}</strong>
+      </h3>
+      <div *ngIf="!willRent">
+        <h3>If you hosted a room on Airbnb for 9 days a month, or rented out a room in your house, you could afford: </h3>
+        <h3><strong> {{ withRent | currency:'CAD':true }} </strong> </h3>
+      </div>
+      <div *ngIf="!solarPanels">
+        <h3>If you only installed solar panels on your home, you could afford: </h3>
+        <h3><strong> {{ withPanels | currency:'CAD':true }} </strong></h3>
+      </div>
+      <div *ngIf="!solarPanels || !willRent">
+        <h3>If you install solar panels and did some form of renting, you could afford: </h3>
+        <h3><strong> {{ withBoth | currency:'CAD':true }} </strong></h3>
+      </div>
+    </div>
+  </div>
+  <div fxFlex.xs="2.5%" fxFlex.sm="5%" fxFlex.md="7.5%" fxFlex.gt-md="10%"></div>
+  <div class="buttons">
+    <button mat-raised-button color="accent" (click)="more()">Find out more</button>
+  </div>
+</div>
