@@ -1,0 +1,8 @@
+.image-container {
+    background-position: 50%;
+    background-size: cover;
+    height: 100vh;
+    position: relative;
+    margin-top: -5.275em;
+    z-index: -1;
+}
