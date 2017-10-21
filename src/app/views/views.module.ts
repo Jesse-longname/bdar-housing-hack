@@ -6,7 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../core/material.module';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
-import { GetStartedComponent } from './get-started/get-started.component';
+import { GetStartedComponent, SolarInfoDialog, RentInfoDialog } from './get-started/get-started.component';
 import { RouterModule } from '@angular/router';
 import { StartComponent } from './start/start.component';
 
@@ -19,6 +19,15 @@ import { StartComponent } from './start/start.component';
     ReactiveFormsModule,
     RouterModule
   ],
-  declarations: [HomeComponent, AboutComponent, ContactComponent, GetStartedComponent, StartComponent]
+  declarations: [
+    HomeComponent, 
+    AboutComponent, 
+    ContactComponent, 
+    GetStartedComponent, 
+    StartComponent,
+    RentInfoDialog,
+    SolarInfoDialog
+  ],
+  entryComponents: [ SolarInfoDialog, RentInfoDialog ]
 })
 export class ViewsModule { }
