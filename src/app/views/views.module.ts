@@ -8,7 +8,7 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { GetStartedComponent, SolarInfoDialog, RentInfoDialog } from './get-started/get-started.component';
 import { RouterModule } from '@angular/router';
-import { StartComponent } from './start/start.component';
+import { StartComponent, CalculatedInfoDialog } from './start/start.component';
 
 @NgModule({
   imports: [
@@ -26,8 +26,9 @@ import { StartComponent } from './start/start.component';
     GetStartedComponent, 
     StartComponent,
     RentInfoDialog,
-    SolarInfoDialog
+    SolarInfoDialog,
+    CalculatedInfoDialog
   ],
-  entryComponents: [ SolarInfoDialog, RentInfoDialog ]
+  entryComponents: [ SolarInfoDialog, RentInfoDialog, CalculatedInfoDialog ]
 })
 export class ViewsModule { }

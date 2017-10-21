@@ -29,6 +29,7 @@ export class GetStartedComponent implements OnInit {
   openRentInfo() {
     let dialogRef = this.dialog.open(RentInfoDialog, {
       width: 'auto',
+      height: '75%',
       data: { }
     });
   }
@@ -36,6 +37,7 @@ export class GetStartedComponent implements OnInit {
   openSolarInfo() {
     let dialogRef = this.dialog.open(SolarInfoDialog, {
       width: 'auto',
+      height: '75%',
       data: { }
     });
   }
@@ -48,6 +50,8 @@ export class GetStartedComponent implements OnInit {
   <p>With the help of The City of Barrie and BDAR, your house can be outfitted with a Solar Panel roof that will generate electricity to 
   power you home and to sell back to the Ontario electricity grid.</p>
   <p>With this, you can increase your buying power and afford a more expensive house, or pay off your new house in a lower time frame.</p>
+  <p>Find out more <a href="https://www.canada.ca/en/revenue-agency/services/tax/businesses/other-topics-businesses/ontario-s-fit-microfit-programs.html">here</a>.</p>
+  <button mat-raised-button color="accent" (click)="dialogRef.close()">Close</button>
   `
 })
 export class SolarInfoDialog {
@@ -70,10 +74,15 @@ export class SolarInfoDialog {
   <p>For people that aren't familiar with being a landlord, these options can seem intimidating. However,
   The City of Barrie and BDAR will help you every step of the way. Whether it is creating a post on Airbnb or
   setting up a lease, we will make it easy for you to have your house pay off it's own mortgage.</p>
+  <button mat-raised-button color="accent" (click)="dialogRef.close()">Close</button>
    `
 })
 export class RentInfoDialog {
+  constructor(public dialogRef: MatDialogRef<RentInfoDialog>, @Inject(MAT_DIALOG_DATA) public data: any) { }
 
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 }
 
 

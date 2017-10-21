@@ -8,22 +8,22 @@
     </div>
     <div fxFlex class="subtitles">
       <h3>
-        Based on your answers to our quiz, here is what you can afford: 
+        Based on your answers to our quizzzzz, here is what you can afford: 
       </h3>
       <h3>
-        <strong>{{ customAffordableHouse | currency:'CAD':true }}</strong>
+        <strong>{{ customAffordableHouse | currency:'CAD':true }}</strong><a class="link" (click)="openCustom()">How was this calculated?</a>
       </h3>
       <div *ngIf="!willRent">
         <h3>If you hosted a room on Airbnb for 9 days a month, or rented out a room in your house, you could afford: </h3>
-        <h3><strong> {{ withRent | currency:'CAD':true }} </strong> </h3>
+        <h3><strong> {{ withRent | currency:'CAD':true }} </strong><a class="link" (click)="openRoom()">How was this calculated?</a></h3>
       </div>
       <div *ngIf="!solarPanels">
         <h3>If you only installed solar panels on your home, you could afford: </h3>
-        <h3><strong> {{ withPanels | currency:'CAD':true }} </strong></h3>
+        <h3><strong> {{ withPanels | currency:'CAD':true }} </strong><a class="link" (click)="openSolar()">How was this calculated?</a></h3>
       </div>
       <div *ngIf="!solarPanels || !willRent">
         <h3>If you install solar panels and did some form of renting, you could afford: </h3>
-        <h3><strong> {{ withBoth | currency:'CAD':true }} </strong></h3>
+        <h3><strong> {{ withBoth | currency:'CAD':true }} </strong><a class="link" (click)="openBoth()">How was this calculated?</a></h3>
       </div>
     </div>
   </div>

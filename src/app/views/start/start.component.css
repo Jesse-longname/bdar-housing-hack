@@ -1,3 +1,10 @@
 .titles {
     text-align: center;
 }
+
+.link {
+    font-size: 12px;
+    margin-left: 20px;
+    cursor: pointer;
+    color: #144768;
+}
