@@ -1,0 +1,16 @@
+agm-map {
+    height: 40vh;
+}
+
+.spacer {
+    height: 1vh;
+}
+
+app-house-card {
+    margin-bottom: 1vh;
+}
+
+.house-cards {
+    height: 54.5vh;
+    overflow-y: scroll;
+}

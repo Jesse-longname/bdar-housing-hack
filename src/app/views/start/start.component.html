@@ -8,7 +8,7 @@
     </div>
     <div fxFlex class="subtitles">
       <h3>
-        Based on your answers to our quizzzzz, here is what you can afford: 
+        Based on your answers to our quiz, here is what you can afford: 
       </h3>
       <h3>
         <strong>{{ customAffordableHouse | currency:'CAD':true }}</strong><a class="link" (click)="openCustom()">How was this calculated?</a>
@@ -29,6 +29,7 @@
   </div>
   <div fxFlex.xs="2.5%" fxFlex.sm="5%" fxFlex.md="7.5%" fxFlex.gt-md="10%"></div>
   <div class="buttons">
-    <button mat-raised-button color="accent" (click)="more()">Find out more</button>
+    <button mat-raised-button color="accent" (click)="back()">Back</button>
+    <button mat-raised-button color="accent" routerLink="/view">See houses</button>
   </div>
 </div>

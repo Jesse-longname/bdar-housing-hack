@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
+import { Component, OnInit, Input, Inject, EventEmitter, OnDestroy, Output } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
@@ -21,7 +21,9 @@ export class StartComponent implements OnInit {
   withRent: number;
   withPanels: number;
   withBoth: number;
-  
+
+  @Output() goBack = new EventEmitter<null>();
+
   constructor(private dialog: MatDialog) { 
     
   }
@@ -38,6 +40,10 @@ export class StartComponent implements OnInit {
 
   more() {
 
+  }
+
+  back() {
+    this.goBack.emit();
   }
 
   openCustom() {

@@ -6,11 +6,11 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyAWhqtlaPOtZfYkMsyywa219XWoNCFjKpY",
-    authDomain: "bare-essentials-80136.firebaseapp.com",
-    databaseURL: "https://bare-essentials-80136.firebaseio.com",
-    projectId: "bare-essentials-80136",
-    storageBucket: "",
-    messagingSenderId: "474919259580"
+    apiKey: "AIzaSyDg05Y9aFVLb_w4tlUVffiezZ6B3OQ7hSk",
+    authDomain: "bdar-d0f45.firebaseapp.com",
+    databaseURL: "https://bdar-d0f45.firebaseio.com",
+    projectId: "bdar-d0f45",
+    storageBucket: "bdar-d0f45.appspot.com",
+    messagingSenderId: "597120078215"
   }
 };

@@ -8,6 +8,12 @@
           <button mat-button routerLink="/home" (click)="sidenav.close()">
             <h2>Home</h2>
           </button>
+          <button mat-button routerLink="/get-started" (click)="sidenav.close()">
+            <h2>Take the Quiz</h2>
+          </button>
+          <button mat-button routerLink="/view" (click)="sidenav.close()">
+            <h2>View Houses</h2>
+          </button>
           <button mat-button routerLink="/about" (click)="sidenav.close()">
             <h2>About</h2>
           </button>
@@ -20,6 +26,7 @@
           <mat-icon aria-label="Open Menu">menu</mat-icon>
         </button>
         <router-outlet></router-outlet>
+        <div class="spacer"></div>
       </div>
     </mat-sidenav-container>
   <footer class="page-footer">

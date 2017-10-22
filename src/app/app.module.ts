@@ -10,6 +10,8 @@ import { MaterialModule } from './core/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
+import { AgmCoreModule } from '@agm/core';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 @NgModule({
   declarations: [
@@ -19,8 +21,12 @@ import { environment } from '../environments/environment';
     CoreModule,
     MaterialModule,
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
     AppRoutingModule,
     BrowserModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyALe8f9n25Cpo9IXFpAzumRjQic4Ttp3CI'
+    }),
     FlexLayoutModule,
     BrowserAnimationsModule,
     ViewsModule

@@ -9,7 +9,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 })
 export class GetStartedComponent implements OnInit {
 
-  ownsCar: boolean;
+  willSmartGrid: boolean;
   willRent: boolean;
   householdIncome: number;
   submitted = false;
@@ -40,6 +40,13 @@ export class GetStartedComponent implements OnInit {
       height: '75%',
       data: { }
     });
+  }
+
+  back() {
+    this.submitted = false;
+    this.householdIncome = undefined;
+    this.willRent = undefined;
+    this.willSmartGrid = undefined;
   }
 }
 

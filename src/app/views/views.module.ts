@@ -8,16 +8,21 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { GetStartedComponent, SolarInfoDialog, RentInfoDialog } from './get-started/get-started.component';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
 import { StartComponent, CalculatedInfoDialog } from './start/start.component';
+import { ViewComponent } from './view/view.component';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   imports: [
+    SharedModule,
     CommonModule,
     FlexLayoutModule,
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    AgmCoreModule,
   ],
   declarations: [
     HomeComponent, 
@@ -27,7 +32,8 @@ import { StartComponent, CalculatedInfoDialog } from './start/start.component';
     StartComponent,
     RentInfoDialog,
     SolarInfoDialog,
-    CalculatedInfoDialog
+    CalculatedInfoDialog,
+    ViewComponent
   ],
   entryComponents: [ SolarInfoDialog, RentInfoDialog, CalculatedInfoDialog ]
 })

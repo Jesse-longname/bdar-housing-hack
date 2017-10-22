@@ -1,0 +1,17 @@
+<mat-card fxLayout="row">
+  <div fxFlex="5%">
+    <h2>{{label}}</h2>
+  </div>
+  <div fxFlex="25%">
+    <img class="house-image" src="http://images.all-free-download.com/images/graphiclarge/green_house_icon_312519.jpg">
+  </div>
+  <div fxFlex="5%"></div>
+  <div fxFlex="65%" fxLayout="column">
+    <div fxFlex>
+      <h3>{{house.address}}</h3>
+    </div>
+    <div fxFlex>
+      <h3>{{house.price | currency:'CAD':true }}</h3>
+    </div>
+  </div>
+</mat-card>

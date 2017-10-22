@@ -4,7 +4,7 @@ import { HomeComponent } from './views/home/home.component';
 import { ContactComponent } from './views/contact/contact.component';
 import { AboutComponent } from './views/about/about.component';
 import { GetStartedComponent } from './views/get-started/get-started.component';
-import { StartComponent } from './views/start/start.component';
+import { ViewComponent } from './views/view/view.component';
 
 const appRoutes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -12,7 +12,7 @@ const appRoutes: Routes = [
     { path: 'about', component: AboutComponent },
     { path: 'contact', component: ContactComponent },
     { path: 'get-started', component: GetStartedComponent },
-    { path: 'start/:income:car:rent:host', component: StartComponent },
+    { path: 'view', component: ViewComponent },
     { path: '**', redirectTo: '/home' }
 ];
 

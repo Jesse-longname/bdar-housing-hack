@@ -37,17 +37,6 @@
         <mat-form-field>
           <input matInput [(ngModel)]="householdIncome" type="number" placeholder="Household Income" name="income" required>
         </mat-form-field>
-        <!-- <p class="label">Do you own a car?</p>
-        <mat-radio-group [(ngModel)]="ownsCar" name="car" required>
-          <mat-radio-button disableRipple [value]="true">
-            Yes
-          </mat-radio-button>
-          <mat-radio-button disableRipple [value]="false">
-            No
-          </mat-radio-button>
-        </mat-radio-group> 
-        <br >
-        <br >-->
         <p class="label">Are you willing to rent a room of your house or host an Airbnb room?</p>
         <mat-radio-group [(ngModel)]="willRent" name="rent" required>
           <mat-radio-button disableRipple [value]="true">
@@ -82,6 +71,5 @@
       <div fxFlex></div>
     </div>
     <div fxFlex.xs="2.5%" fxFlex.sm="5%" fxFlex.md="7.5%" fxFlex.gt-md="10%"></div>
-    <app-start *ngIf="submitted" [income]="householdIncome" [willRent]="willRent" [solarPanels]="willSmartGrid"></app-start>
-    <!-- <app-start income="50000" ownsCar="true" willRent="true" willHost="true" solarPanels="true"></app-start> -->
+    <app-start *ngIf="submitted" [income]="householdIncome" [willRent]="willRent" [solarPanels]="willSmartGrid" (goBack)="back()"></app-start>
 </div>
