@@ -29,7 +29,8 @@ export class GetStartedComponent implements OnInit {
   openRentInfo() {
     let dialogRef = this.dialog.open(RentInfoDialog, {
       width: 'auto',
-      height: '75%',
+      maxHeight: '75%',
+      panelClass: "overflow-container",
       data: { }
     });
   }
@@ -37,7 +38,8 @@ export class GetStartedComponent implements OnInit {
   openSolarInfo() {
     let dialogRef = this.dialog.open(SolarInfoDialog, {
       width: 'auto',
-      height: '75%',
+      maxHeight: '75%',
+      panelClass: "overflow-container",
       data: { }
     });
   }

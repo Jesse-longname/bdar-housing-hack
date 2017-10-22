@@ -2,6 +2,35 @@ import { Component, OnInit, Input, Inject, EventEmitter, OnDestroy, Output } fro
 import { CurrencyPipe } from '@angular/common';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
+export function calcMortgage(paymentFreq: string, annualInterestRate: number, amortizationYears: number, downPaymentPercent: number, monthlyPaymentAmount: number) {
+  let numPayments = 0; // Per year
+  switch(paymentFreq) {
+    case "bi-monthly":
+      numPayments = 6;
+      break;
+    case "monthly":
+      numPayments = 12;
+      break;
+    case "semi-monthly":
+      numPayments = 24;
+      break;
+    case "bi-weekly":
+      numPayments = 26;
+      break;
+    case "weekly":
+      numPayments = 52;
+      break;
+  }
+  let interestForPeriod = (annualInterestRate/100)/numPayments; // r
+  let totalPayments = amortizationYears * numPayments // n
+  let paymentAmount = (monthlyPaymentAmount*12)/numPayments;
+  let top = paymentAmount * (Math.pow(1+interestForPeriod, totalPayments)-1);
+  let bot = interestForPeriod*Math.pow(1+interestForPeriod, 300);
+  let maxMortgage = top/bot;
+  let maxHousePrice = maxMortgage/(1 - (downPaymentPercent/100));
+  return maxHousePrice;
+}
+
 @Component({
   selector: 'app-start',
   templateUrl: './start.component.html',
@@ -14,13 +43,17 @@ export class StartComponent implements OnInit {
 
   rentBenefit: number = 6600 / 12;
   solarPanelBenefit: number = 5700 / 12;
-  airbnbBenefit: number = 6600 / 12;
 
   customAffordableHouse: number;
   affordableHouse: number;
   withRent: number;
   withPanels: number;
   withBoth: number;
+
+  downPayment = 5;
+  amortization = 25;
+  annualInterest = 3.33;
+  paymentFreq = "monthly";
 
   @Output() goBack = new EventEmitter<null>();
 
@@ -29,107 +62,88 @@ export class StartComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.affordableHouse = (this.income/12)*.3*206.78;
-    this.withRent = this.affordableHouse + (this.rentBenefit*206.78);
-    this.withPanels = this.affordableHouse + (this.solarPanelBenefit*206.78);
-    this.withBoth = this.affordableHouse + (this.rentBenefit*206.78) + (this.solarPanelBenefit*206.78);
-
-    this.customAffordableHouse = (this.income/12)*.3 + (this.willRent ? 1 * this.rentBenefit : 0) + (this.solarPanels ? 1 * this.solarPanelBenefit : 0);
-    this.customAffordableHouse *= 206.78;
+    this.updateVals();
   }
 
   more() {
 
   }
 
+  updateVals() {
+    let monthlyPayment = (this.income/12)*.3;
+    this.affordableHouse = calcMortgage(this.paymentFreq, this.annualInterest, this.amortization, this.downPayment, monthlyPayment);
+    this.withRent = calcMortgage(this.paymentFreq, this.annualInterest, this.amortization, this.downPayment, monthlyPayment+this.rentBenefit);
+    this.withPanels = calcMortgage(this.paymentFreq, this.annualInterest, this.amortization, this.downPayment, monthlyPayment+this.solarPanelBenefit);
+    this.withBoth = calcMortgage(this.paymentFreq, this.annualInterest, this.amortization, this.downPayment, monthlyPayment+this.solarPanelBenefit+this.rentBenefit);
+    this.customAffordableHouse = calcMortgage(this.paymentFreq, this.annualInterest, this.amortization, this.downPayment, monthlyPayment+ (this.willRent ? this.rentBenefit : 0) + (this.solarPanels ? this.solarPanelBenefit : 0));
+  }
+
   back() {
     this.goBack.emit();
   }
 
-  openCustom() {
+  openDialog(showRent: boolean, showSolar: boolean) {
     let dialogRef = this.dialog.open(CalculatedInfoDialog, {
       width: 'auto',
-      height: '75%',
+      maxHeight: '75%',
+      panelClass: "overflow-container",
       data: { 
         income: this.income,
-        showRent: this.willRent,
-        showSolar: this.solarPanels
+        showRent: showRent,
+        showSolar: showSolar
       }
     });
+    dialogRef.afterClosed().subscribe(() => {
+      let comp = dialogRef.componentInstance;
+      this.paymentFreq = comp.paymentFreq;
+      this.amortization = comp.amortization;
+      this.annualInterest = comp.annualInterest;
+      this.downPayment = comp.downPayment;
+      this.updateVals();
+    });
+  }
+
+  openCustom() {
+    this.openDialog(this.willRent, this.solarPanels);
   }
 
   openRoom() {
-    let dialogRef = this.dialog.open(CalculatedInfoDialog, {
-      width: 'auto',
-      height: '75%',
-      data: { 
-        income: this.income,
-        showRent: true,
-        showSolar: false
-      }
-    });
+    this.openDialog(true, false);
   }
 
   openSolar() {
-    let dialogRef = this.dialog.open(CalculatedInfoDialog, {
-      width: 'auto',
-      height: '75%',
-      data: { 
-        income: this.income,
-        showRent: false,
-        showSolar: true
-      }
-    });
+    this.openDialog(false, true);
   }
 
   openBoth() {
-    let dialogRef = this.dialog.open(CalculatedInfoDialog, {
-      width: 'auto',
-      height: '75%',
-      data: { 
-        income: this.income,
-        showRent: true,
-        showSolar: true
-      }
-    });
+    this.openDialog(true, true);
   }
 
 }
 
 @Component({
   selector: 'app-calculated-info',
-  template: `
-  <div>
-    <p>Based on your annual household income, and the <a href="alink">definition of affordable income</a>, here is what we used to calculate the base house you can afford:</p>
-    <ul>
-      <li>Mortgage Amortization: {{amortization}} Months ({{amortization/12}} Years)</li>
-      <li>Interest Rate: {{annualInterest}}%</li>
-      <li>Payment Frequency: {{paymentFreq}}</li>
-      <li>Monthly payments of 30% Monthly Income: {{(income/12)*.3 | currency:'CAD':true}}</li>
-    </ul>
-    <p>This means you can afford: <strong>{{(income/12)*.3*206.78 | currency:'CAD':true}}</strong></p>
-  </div>
-  <div *ngIf="showRent">
-    <p>The average rent for a room in Barrie is {{avgRent | currency:'CAD':true }} per month. If you rent out a single room for this price, you could afford an extra {{avgRent*206.78 | currency:'CAD':true}} towards your house.</p>
-  </div>
-  <div *ngIf="showSolar">
-    <p>Installing solar panels can save you {{solarBenefit | currency:'CAD':true }} annually. Assuming you put all of the savings into your house, you could afford an extra {{(solarBenefit/12)*206.78 | currency:'CAD':true}} towards your hosue.</p>
-  </div>
-  <div *ngIf="showSolar || showRent">
-    <p>Adding this up, for a house you can afford: <strong>{{(income/12)*.3*206.78 + (showSolar ? (solarBenefit/12)*206.78 :  0) + (showRent ? avgRent*206.78 : 0) | currency:'CAD':true}}</strong>
-  </div>
-  <button mat-raised-button color="accent" (click)="dialogRef.close()">Close</button>
-  `
+  templateUrl: './calculated-info.dialog.html' 
 })
 export class CalculatedInfoDialog {
   avgRent = 550;
   solarBenefit = 5700;
-  amortization = 300;
-  annualInterest = 3.33;
-  paymentFreq = "Monthly";
   income: number;
   showRent: boolean;
   showSolar: boolean;
+  change = false;
+
+  downPayment = 5;
+  amortization = 25;
+  annualInterest = 3.33;
+  paymentFreq = "monthly";
+
+  tempDownPayment = 5;
+  tempAmortization = 25;
+  tempAnnualInterest = 3.33;
+  tempPaymentFreq = "monthly";
+
+  amount = 0;
 
   constructor(public dialogRef: MatDialogRef<CalculatedInfoDialog>, @Inject(MAT_DIALOG_DATA) public data: any) {
     this.income = data.income;
@@ -140,5 +154,24 @@ export class CalculatedInfoDialog {
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  submit(): void {
+    this.downPayment = this.tempDownPayment;
+    this.amortization = this.tempAmortization;
+    this.annualInterest = this.tempAnnualInterest;
+    this.paymentFreq = this.tempPaymentFreq;
+    this.change = false;
+  }
+
+  findAmount(): number {
+    let monthlyPayment = this.income/12*.3;
+    if (this.showRent) {
+      monthlyPayment += this.avgRent;
+    }
+    if (this.showSolar) {
+      monthlyPayment += (this.solarBenefit/12);
+    }
+    return calcMortgage(this.tempPaymentFreq, this.tempAnnualInterest, this.tempAmortization, this.tempDownPayment, monthlyPayment);
   }
 }

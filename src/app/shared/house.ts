@@ -4,4 +4,5 @@ export class House {
     lat: number;
     long: number;
     price: number;
+    imageUrl: string;
   }

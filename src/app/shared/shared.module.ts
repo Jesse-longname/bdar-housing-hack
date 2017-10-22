@@ -5,14 +5,18 @@ import { MapComponent } from './map/map.component';
 import { HouseCardComponent } from './house-card/house-card.component';
 import { MaterialModule } from '../core/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { HouseInfoComponent } from './house-info/house-info.component';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   imports: [
     CommonModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    AgmCoreModule,
   ],
   exports: [HouseCardComponent],
-  declarations: [LogoComponent, MapComponent, HouseCardComponent]
+  entryComponents: [HouseInfoComponent],
+  declarations: [LogoComponent, MapComponent, HouseCardComponent, HouseInfoComponent]
 })
 export class SharedModule { }

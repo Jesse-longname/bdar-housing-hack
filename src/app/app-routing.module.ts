@@ -13,6 +13,7 @@ const appRoutes: Routes = [
     { path: 'contact', component: ContactComponent },
     { path: 'get-started', component: GetStartedComponent },
     { path: 'view', component: ViewComponent },
+    { path: 'view/:budget', component: ViewComponent },
     { path: '**', redirectTo: '/home' }
 ];
 

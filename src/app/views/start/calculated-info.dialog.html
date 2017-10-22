@@ -1,0 +1,53 @@
+<div *ngIf="!change">
+    <div>
+        <p>Based on your annual household income, and the <a href="alink">definition of affordable income</a>, here is what we used to calculate the base house you can afford:</p>
+        <ul>
+        <li>Mortgage Amortization: {{amortization*12}} Months ({{amortization}} Years)</li>
+        <li>Interest Rate: {{annualInterest}}%</li>
+        <li>Payment Frequency: {{paymentFreq}}</li>
+        <li>Monthly payments of 30% Monthly Income: {{(income/12)*.3 | currency:'CAD':true}}</li>
+        <li>Down Payment: {{downPayment}}%</li>
+        </ul>
+        <p>This means you can afford: <strong>{{findAmount() | currency:'CAD':true}}</strong></p>
+    </div>
+    <div *ngIf="showRent">
+        <p>The average rent for a room in Barrie is {{avgRent | currency:'CAD':true }} per month. If you rent out a single room for this price, you could afford an extra {{avgRent*206.78 | currency:'CAD':true}} towards your house.</p>
+    </div>
+    <div *ngIf="showSolar">
+        <p>Installing solar panels can save you {{solarBenefit | currency:'CAD':true }} annually. Assuming you put all of the savings into your house, you could afford an extra {{(solarBenefit/12)*206.78 | currency:'CAD':true}} towards your hosue.</p>
+    </div>
+    <div *ngIf="showSolar || showRent">
+        <p>Adding this up, for a house you can afford: <strong>{{findAmount() | currency:'CAD':true}}</strong>
+    </div>
+    <button mat-raised-button color="accent" (click)="change=true">Change Mortgage Details</button>
+    <button mat-raised-button color="accent" (click)="dialogRef.close()">Close</button>
+</div>
+<div *ngIf="change">
+    <form (ngSubmit)="submit()" #changeForm fxLayout="column">
+        <mat-form-field>
+            <input matInput placeholder="Annual Interest Rate" [(ngModel)]="tempAnnualInterest" name="interest">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-select placeholder="Payment Frequency" name="paymentType" [(ngModel)]="tempPaymentFreq">
+                <mat-option value="bi-monthly">Bi-Monthly</mat-option>
+                <mat-option value="monthly">Monthly</mat-option>
+                <mat-option value="semi-monthly">Semi-Monthly</mat-option>
+                <mat-option value="bi-weekly">Bi-Weekly</mat-option>
+                <mat-option value="weekly">Weekly</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="number" placeholder="Amortization (Years)" name="amo" [(ngModel)]="tempAmortization">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="number" placeholder="Down Payment %" name="down" [(ngModel)]="tempDownPayment">
+        </mat-form-field>
+        <div class="buttons">
+            <button type="submit" mat-raised-button color="accent"> Confirm Changes </button>
+            <button type="button" mat-raised-button color="accent" (click)="change=false"> Cancel </button>
+        </div>
+    </form>
+    <div>
+        <p>Based on what you entered, without any benefits, you can afford a house worth: <strong>{{findAmount() | currency:'CAD':true}}</strong></p>
+    </div>
+</div>

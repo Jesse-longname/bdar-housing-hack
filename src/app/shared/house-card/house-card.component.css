@@ -4,4 +4,18 @@
 
 mat-card {
     margin-bottom: 0.5vh;
+    min-height: 22vh;
+}
+
+.item {
+    margin: 0;
+}
+
+.link {
+    color: #144768;
+    cursor: pointer;
+}
+
+.address {
+    line-height: 120%;
 }

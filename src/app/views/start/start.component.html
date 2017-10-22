@@ -30,6 +30,6 @@
   <div fxFlex.xs="2.5%" fxFlex.sm="5%" fxFlex.md="7.5%" fxFlex.gt-md="10%"></div>
   <div class="buttons">
     <button mat-raised-button color="accent" (click)="back()">Back</button>
-    <button mat-raised-button color="accent" routerLink="/view">See houses</button>
+    <button mat-raised-button color="accent" [routerLink]="'/view/'+customAffordableHouse">See houses</button>
   </div>
 </div>

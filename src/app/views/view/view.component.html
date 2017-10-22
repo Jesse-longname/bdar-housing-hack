@@ -1,16 +1,9 @@
-<div class="about-main" fxLayout="row wrap" fxLayoutAlign="center">
-  <div fxFlex.xs="2.5%" fxFlex.sm="5%" fxFlex.md="7.5%" fxFlex.gt-md="10%"></div>
-  <div fxFlex.xs="95%" fxFlex.sm="90%" fxFlex.md="85%" fxFlex.gt-md="80%" fxLayout="column" fxLayoutAlign="center">
-    <div fxFlex="100%"  fxLayout="row" fxLayoutAlign="center">
-      
-    </div>
-  </div>
-  <div fxFlex.xs="2.5%" fxFlex.sm="5%" fxFlex.md="7.5%" fxFlex.gt-md="10%"></div>
-</div>
-<agm-map [zoom]="12" [latitude]="lat" [longitude]="lng" (boundsChange)="log($event)">
-  <agm-marker *ngFor="let house of houses | async; let i = index" [latitude]="house.lat" [longitude]="house.long" [label]="(i+1).toString()" [zIndex]="-i"></agm-marker>
+<agm-map [zoom]="12" [latitude]="lat" [longitude]="lng" (markerClick)="log($event)">
+  <agm-marker *ngFor="let house of houses | async; let i = index" [latitude]="house.lat" [longitude]="house.long" 
+              [label]="(i+1).toString()" [zIndex]="-i" (markerClick)="goTo(i)"></agm-marker>
 </agm-map>
 <div class="spacer"></div>
 <div class="house-cards">
-  <app-house-card *ngFor="let house of houses | async; let i = index" [label]="i+1" [house]="house"></app-house-card>
+  <app-house-card *ngFor="let house of housesNoop; let i = index" [label]="i+1" [house]="house" [budget]="budget" [id]="'house-card'+i"></app-house-card>
+  <div class="spacer"></div>
 </div>
