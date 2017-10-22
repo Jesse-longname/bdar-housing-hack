@@ -166,6 +166,7 @@ export class CalculatedInfoDialog {
 
   findAmount(): number {
     let monthlyPayment = this.income/12*.3;
+    this.amount = calcMortgage(this.tempPaymentFreq, this.tempAnnualInterest, this.tempAmortization, this.tempDownPayment, monthlyPayment);
     if (this.showRent) {
       monthlyPayment += this.avgRent;
     }

@@ -8,7 +8,7 @@
         <li>Monthly payments of 30% Monthly Income: {{(income/12)*.3 | currency:'CAD':true}}</li>
         <li>Down Payment: {{downPayment}}%</li>
         </ul>
-        <p>This means you can afford: <strong>{{findAmount() | currency:'CAD':true}}</strong></p>
+        <p>This means you can afford: <strong>{{amount | currency:'CAD':true}}</strong></p>
     </div>
     <div *ngIf="showRent">
         <p>The average rent for a room in Barrie is {{avgRent | currency:'CAD':true }} per month. If you rent out a single room for this price, you could afford an extra {{avgRent*206.78 | currency:'CAD':true}} towards your house.</p>
