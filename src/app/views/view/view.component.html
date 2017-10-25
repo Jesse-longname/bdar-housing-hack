@@ -1,9 +1,11 @@
-<agm-map [zoom]="12" [latitude]="lat" [longitude]="lng" (markerClick)="log($event)">
-  <agm-marker *ngFor="let house of houses | async; let i = index" [latitude]="house.lat" [longitude]="house.long" 
-              [label]="(i+1).toString()" [zIndex]="-i" (markerClick)="goTo(i)"></agm-marker>
-</agm-map>
-<div class="spacer"></div>
-<div class="house-cards">
-  <app-house-card *ngFor="let house of housesNoop; let i = index" [label]="i+1" [house]="house" [budget]="budget" [id]="'house-card'+i"></app-house-card>
-  <div class="spacer"></div>
+<div class="container">
+  <agm-map [zoom]="12" [latitude]="lat" [longitude]="lng" (markerClick)="log($event)">
+    <agm-marker *ngFor="let house of houses | async; let i = index" [latitude]="house.lat" [longitude]="house.long" 
+                [label]="(i+1).toString()" [zIndex]="-i" (markerClick)="goTo(i)"></agm-marker>
+  </agm-map>
+  <!-- <div class="spacer"></div> -->
+  <div class="house-cards">
+    <app-house-card *ngFor="let house of housesNoop; let i = index" [label]="i+1" [house]="house" [budget]="budget" [id]="'house-card'+i"></app-house-card>
+    <div class="spacer"></div>
+  </div>
 </div>

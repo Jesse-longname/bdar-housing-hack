@@ -1,5 +1,6 @@
 agm-map {
-    height: 40vh;
+    height: 44vh;
+    flex: 1 1;
 }
 
 .spacer {
@@ -11,6 +12,23 @@ app-house-card {
 }
 
 .house-cards {
-    height: 54.5vh;
+    height: 52vh;
+    /* flex: 1 1; */
     overflow-y: scroll;
+}
+
+.container {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+/* Medium screens */
+@media all and (min-width: 960px) {
+    agm-map {
+        height: 96vh;
+    }
+    .house-cards {
+        flex: 1 1;
+        height: 96vh;
+    }
 }

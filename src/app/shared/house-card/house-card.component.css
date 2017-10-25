@@ -3,8 +3,9 @@
 }
 
 mat-card {
-    margin-bottom: 0.5vh;
-    min-height: 22vh;
+    /* margin-bottom: 0.5vh; */
+    margin-bottom: 2px;
+    /* min-height: 24vh; */
 }
 
 .item {
@@ -18,4 +19,5 @@ mat-card {
 
 .address {
     line-height: 120%;
+    margin-bottom: 0;
 }

@@ -1,8 +1,8 @@
 <mat-card fxLayout="row" id="card">
-  <div fxFlex="5%">
+  <!-- <div fxFlex="5%">
     <h2>{{label}}</h2>
-  </div>
-  <div fxFlex="25%">
+  </div> -->
+  <div fxFlex="30%">
     <img class="house-image" [src]="house.imageUrl ? house.imageUrl : 'http://images.all-free-download.com/images/graphiclarge/green_house_icon_312519.jpg'">
   </div>
   <div fxFlex="5%"></div>
@@ -18,7 +18,7 @@
       </div>
       <div fxFlex="50%">
         <h3 class="item">{{house.price | currency:'CAD':true }}</h3>
-        <p *ngIf="budget" class="item">{{budget >= house.price ? "Within Price Range" : "Out of Price Range" }}</p>
+        <p *ngIf="budget" class="item">{{budget >= house.price ? "In Price Range" : "Out of Price Range" }}</p>
         <a class="link" (click)="view()">View</a>
       </div>
     </div>
