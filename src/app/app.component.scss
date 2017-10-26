@@ -9,16 +9,8 @@ mat-sidenav-container {
     height: inherit;
 }
 
-header {
-    height: 4vh;
-}
-
 @media all and (max-width: 960px) {
     .large-outlet {
         display: none;
     }
 }
-
-/* .spacer {
-    height: 100px;
-} */

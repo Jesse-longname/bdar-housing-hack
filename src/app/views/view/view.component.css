@@ -12,8 +12,7 @@ app-house-card {
 }
 
 .house-cards {
-    height: 52vh;
-    /* flex: 1 1; */
+    height: calc(100vh - 44vh - 40px); /* Full height - map height - header height */
     overflow-y: scroll;
 }
 
