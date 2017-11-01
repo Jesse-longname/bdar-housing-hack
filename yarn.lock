@@ -6,6 +6,10 @@
   version "1.0.0-beta.1"
   resolved "https://registry.yarnpkg.com/@agm/core/-/core-1.0.0-beta.1.tgz#8ba7286e564bfaea8390dc5a8163a064100abc6b"
 
+"@agm/snazzy-info-window@^1.0.0-beta.1":
+  version "1.0.0-beta.1"
+  resolved "https://registry.yarnpkg.com/@agm/snazzy-info-window/-/snazzy-info-window-1.0.0-beta.1.tgz#e8ae6631963d53198f55bb70a22383c7d7fbf421"
+
 "@angular-devkit/build-optimizer@~0.0.28":
   version "0.0.29"
   resolved "https://registry.yarnpkg.com/@angular-devkit/build-optimizer/-/build-optimizer-0.0.29.tgz#ce5b76016bb06978b3da39e601a269578bbb671a"
@@ -36,9 +40,9 @@
   dependencies:
     tslib "^1.7.1"
 
-"@angular/cdk@^2.0.0-beta.12":
-  version "2.0.0-beta.12"
-  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-2.0.0-beta.12.tgz#3a243cb62b93f4e039120ba70f900dc9e235622e"
+"@angular/cdk@github:angular/cdk-builds":
+  version "2.0.0-beta.12-520d83b"
+  resolved "https://codeload.github.com/angular/cdk-builds/tar.gz/3cba692709f9989173d02d04f2c7af114701c6ea"
   dependencies:
     tslib "^1.7.1"
 
@@ -151,9 +155,9 @@
   version "4.4.6"
   resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-4.4.6.tgz#498ece95c5f6066403bf9fd3c5831af42b45618b"
 
-"@angular/material@^2.0.0-beta.12":
-  version "2.0.0-beta.12"
-  resolved "https://registry.yarnpkg.com/@angular/material/-/material-2.0.0-beta.12.tgz#71b6d0b7b021891e5d0e3688c1d4bd78c7457f58"
+"@angular/material@github:angular/material2-builds":
+  version "2.0.0-beta.12-520d83b"
+  resolved "https://codeload.github.com/angular/material2-builds/tar.gz/3a630f4de01c380a3588d38150ef471ff1a3e443"
   dependencies:
     tslib "^1.7.1"
 
@@ -6346,6 +6350,10 @@ silent-error@^1.0.0:
 slide@^1.1.5:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/slide/-/slide-1.1.6.tgz#56eb027d65b4d2dce6cb2e2d32c4d4afc9e1d707"
+
+snazzy-info-window@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/snazzy-info-window/-/snazzy-info-window-1.1.0.tgz#bb1e30b37af8fda8ff9006474085ad5486f06f0f"
 
 sntp@1.x.x:
   version "1.0.9"

@@ -12,6 +12,7 @@ import { SharedModule } from '../shared/shared.module';
 import { StartComponent, CalculatedInfoDialog } from './start/start.component';
 import { ViewComponent } from './view/view.component';
 import { AgmCoreModule } from '@agm/core';
+import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { AgmCoreModule } from '@agm/core';
     ReactiveFormsModule,
     RouterModule,
     AgmCoreModule,
+    AgmSnazzyInfoWindowModule
   ],
   declarations: [
     HomeComponent, 
