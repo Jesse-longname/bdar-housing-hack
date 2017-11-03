@@ -12,4 +12,8 @@ export class AppComponent {
   constructor() {
     this.buildNo = versionInfo.buildNo;
   }
+
+  notify() {
+    console.log("notified");
+  }
 }

@@ -21,7 +21,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
     CoreModule,
     MaterialModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
+    AngularFirestoreModule.enablePersistence(),
     AppRoutingModule,
     BrowserModule,
     AgmCoreModule.forRoot({
