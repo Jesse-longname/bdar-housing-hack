@@ -15,7 +15,7 @@ import { AgmCoreModule } from '@agm/core';
     FlexLayoutModule,
     AgmCoreModule,
   ],
-  exports: [HouseCardComponent],
+  exports: [HouseCardComponent, LogoComponent],
   entryComponents: [HouseInfoComponent],
   declarations: [LogoComponent, MapComponent, HouseCardComponent, HouseInfoComponent]
 })
