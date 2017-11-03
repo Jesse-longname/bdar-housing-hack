@@ -12,6 +12,7 @@ import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import { AgmCoreModule } from '@agm/core';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { NotificationService } from './shared/notification/notification.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
     BrowserAnimationsModule,
     ViewsModule
   ],
-  providers: [],
+  providers: [NotificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
