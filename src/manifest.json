@@ -2,8 +2,8 @@
     "short_name": "BARE",
     "name": "BARE Essentials",
     "start_url": "/",
-    "theme_color": "#AA3B3B",
-    "background_color": "#AA3B3B",
+    "theme_color": "#FAFAFA",
+    "background_color": "#FAFAFA",
     "display": "standalone",
     "orientation": "any",
     "icons": [{

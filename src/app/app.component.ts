@@ -16,10 +16,6 @@ export class AppComponent {
     this.registerServiceWorker();
   }
 
-  notify() {
-    console.log("notified");
-  }
-
   registerServiceWorker() {
     if ('serviceWorker' in navigator && window.location.hostname !== 'localhost') {
       navigator.serviceWorker.register('/service-worker.js')
