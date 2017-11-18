@@ -1,0 +1,22 @@
+<mat-card fxLayout="row" id="card">
+  <div fxFlex="30%">
+    <img class="house-image" [src]="house.imageUrl ? house.imageUrl : defaultImageUrl">
+  </div>
+  <div fxFlex="70%" fxLayout="column">
+    <div fxFlex>
+      <h3 class="address">{{house.address}}</h3>
+    </div>
+    <div fxFlex fxLayout="row">
+      <div fxFlex="50%">
+        <p class="item">3 Rooms</p>
+        <p class="item">2 Bath</p>
+        <p class="item">5000 sq ft</p>
+      </div>
+      <div fxFlex="50%">
+        <h3 class="item">{{house.price | currency:'CAD':true }}</h3>
+        <p *ngIf="budget" class="item">{{budget >= house.price ? "In " : "Out of "}} Price Range</p>
+        <a class="link" (click)="view()">View</a>
+      </div>
+    </div>
+  </div>
+</mat-card>
