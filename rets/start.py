@@ -1,6 +1,7 @@
 from rets import Session
 from geopy.geocoders import Nominatim
 from google.cloud import storage, firestore
+import sys
 
 LOGIN_URL = 'http://matrixrets.onregional.ca/rets/Login.ashx'
 USERNAME = 'USERNAME'
@@ -46,7 +47,7 @@ def print_cities(data):
     print('======== END CITIES ========')
     print()
 
-def print_coord(data):
+def print_loc_info(data):
     for info in data: 
         print()
         if 'ROAD' in info['StreetName']:
@@ -85,8 +86,13 @@ def firebase_it(client, data):
         info = data[i]
         upload_data = {}
 
-        # Price info
+        # Info from data
         upload_data.update({'price': info['ListPrice']})
+        upload_data.update({'baths': info['BathsTotal']})
+        upload_data.update({'beds': info['BedsTotal']})
+        upload_data.update({'remarks': info['RemarksForClients']})
+        upload_data.update({'sqft': info['SqFtTotal']})
+        upload_data.update({'year_built': info['YearBuilt']})
 
         # Location Info
         if 'ROAD' in info['StreetName']:
@@ -113,7 +119,7 @@ def firebase_it(client, data):
                 new_blob = bucket.blob('house-photos/{}/{}.png'.format(info['Matrix_Unique_ID'], ob['object_id']))
                 new_blob.upload_from_filename(filename='images-upload/{}_{}.png'.format(info['Matrix_Unique_ID'], ob['object_id']))
                 upload_data.update({'imageUrl': new_blob.media_link})
-            break # Only need one image for now
+            
         db.collection(u'houses').document().set(upload_data)
         print('END: ' + str(i))
         print()
@@ -122,14 +128,18 @@ if __name__ == '__main__':
     rets_client = get_client()
 
     custom_search_filter = {
-        'City': 'Barrie'
+        'City': 'Barrie',
+        'Status': 'A'
     }
 
     residential_listings = get_residential_listings(rets_client, 20, search_filter=custom_search_filter)
 
-    # print_cities(residential_listings)
-    # print_important_columns(residential_listings)
-    # print_coord(residential_listings)
-    firebase_it(rets_client, residential_listings)
+    if 'print_cols' in sys.argv:
+        print_important_columns(residential_listings)
+    elif 'print_loc' in sys.argv:
+        print_loc_info(residential_listings)
+    elif 'firebase' in sys.argv:
+        firebase_it(rets_client, residential_listings)
 
     destroy_client(rets_client)
+

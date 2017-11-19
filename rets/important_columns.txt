@@ -25,6 +25,7 @@ PropertySubType
 PropertyType
 Region
 RemarksForClients
+SqFtTotal
 StateOrProvince
 Status
 StreetName
