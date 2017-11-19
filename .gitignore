@@ -4,6 +4,8 @@
 /dist
 /tmp
 /out-tsc
+env
+/rets/images-upload/*.png
 
 # dependencies
 /node_modules

@@ -1,0 +1,4 @@
+Taken from https://www.flexmls.com/developers/rets/tutorials/example-rets-session/#Step6
+
+http://matrixrets.onregional.ca/rets/GetMetadata.ashx?Type=METADATA-Table&ID=Property:Listing
+http://matrixrets.onregional.ca/rets/GetMetadata.ashx?Type=METADATA-LOOKUP_TYPE&ID=Property:PropertySubType
