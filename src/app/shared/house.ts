@@ -5,4 +5,9 @@ export class House {
     long: number;
     price: number;
     imageUrl: string;
+    baths: number;
+    beds: number;
+    remarks: string;
+    sqft: number;
+    yearBuilt: number;
   }
